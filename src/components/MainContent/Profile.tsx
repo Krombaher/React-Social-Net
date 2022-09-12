@@ -4,10 +4,9 @@ import ProfileInfo from './ProfileBlock/ProfileInfo'
 
 function Profile() {
   return (
-    <div>
+    <section className='profile'>
       <ProfileInfo />
-      <ProfileImg />
-    </div>
+    </section>
   )
 }
 
