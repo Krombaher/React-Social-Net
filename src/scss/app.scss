@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #1d1a1a;
+  background-color: $grey;
 }
 
 .app {
@@ -16,7 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #444242;
+    background-color: $white;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #928c8c;
@@ -26,7 +26,7 @@ body {
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    color: #ffffff;
+    color: $blue;
 
     h3 {
       margin-left: 10px;
@@ -41,7 +41,7 @@ body {
   .app__nav {
     display: flex;
     flex-direction: column;
-    background: #444242;
+    background: $white;
     height: 100%;
     min-height: 100vh;
     margin-right: 10px;
@@ -55,7 +55,7 @@ body {
     }
 
     li:hover {
-      background-color: #928c8c;
+      background-color: $hover;
       border-radius: 5px;
       transition: 0.3s;
     }
@@ -67,12 +67,16 @@ body {
     }
 
     a {
-      color: #ffffff;
+      color: $text;
       font-size: 20px;
       font-weight: 600;
       letter-spacing: 1.2px;
       width: 100%;
       padding: 10px;
+    }
+
+    a:hover {
+      color: $blue;
     }
   }
 
@@ -85,78 +89,6 @@ body {
     width: 100%;
     border-radius: 5px;
     border: 1px solid #928c8c;
-  }
-
-  .app__status {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #b3a7a7;
-    border-radius: 5px;
-  }
-  
-  .app__status-name {
-    font-weight: 800;
-  }
-  
-  .app__status-сurrent {
-    font-weight: 600;
-    color: #fff;
-  }
-  
-  .app__profile-info {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 20px 0 20px;
-
-    img {
-      max-width: 250px;
-      border-radius: 5px;
-      height: 300px;
-    }
-  }
-
-  .app__profile-about {
-    width: 100%;
-    margin-left: 10px;
-  }
-
-  .profile__about-name {
-    border-bottom: 1px solid #968c8c;
-
-    p {
-      margin: 10px 0;
-    }
-  }
-
-  .profile__information {
-    margin-top: 10px;
-    border-bottom: 1px solid #968c8c;
-
-    p {
-      margin: 10px 0;
-    }
-  }
-
-  .app_profile-post {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-
-    textarea {
-      height: 100px;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
-    button {
-      width: 200px;
-      height: 30px;
-      border-radius: 10px;
-      border: none;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
   }
 
 }

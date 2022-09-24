@@ -1,11 +1,20 @@
 import React from 'react'
-import ProfileImg from './ProfileBlock/ProfileImg'
-import ProfileInfo from './ProfileBlock/ProfileInfo'
+import {ProfileBlock} from './ProfileBlock/ProfileBlock'
 
-function Profile() {
+type ProfilePostType = {
+  id: number
+  name: string
+  message: string
+}
+
+export type ProfilePostProps = {
+  post: ProfilePostType[]
+}
+
+function Profile(props: ProfilePostProps) {
   return (
     <section className='profile'>
-      <ProfileInfo />
+      <ProfileBlock post={props.post}/>
     </section>
   )
 }

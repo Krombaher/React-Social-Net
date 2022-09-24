@@ -1,36 +1,31 @@
 import React from 'react'
-import photo from '../../../assets/Img/my-photo.jpg'
+import user from '../../../assets/Img/user-icon.png'
+import s from './ProfileBlock.module.scss'
 
-function ProfileInfo() {
+export const ProfileInfo = () => {
   return (
-    <div className='app__profile'>
-      <div className='app__status'>
-        <div className='app__status-name'>Kazhuro Vitaly</div>
-        <div className='app__status-сurrent'>Online</div>
+    <div className={s.statusSection}>
+      <div className={s.status}>
+        <div className={s.statusName}>Kazhuro Vitaly</div>
+        <div className={s.statusCurrent}>Online</div>
       </div>
-      <div className='app__profile-info'>
-        <img src={photo} alt='my-photo' />
-        <div className='app__profile-about'>
-          <div className='profile__about-name'>
+      <div className={s.profileInfo}>
+        <img src={user} alt='profile-photo'/>
+        <div className={s.profileAbout}>
+          <div className={s.aboutName}>
             <h3>Kazhuro Vitaly</h3>
             <p>set a status message</p>
           </div>
-          <div className='profile__information'>
+          <div className={s.profileInformation}>
             <h3>Information</h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Culpa doloremque similique reprehenderit architecto in officiis,
               sed perspiciatis autem maiores sint, aut ad, dignissimos porro.
-              Consectetur sequi sint quidem cumque consequatur.</p>
-          </div>
-          <div className='app_profile-post'>
-            <h3>My Post</h3>
-            <textarea />
-            <button>Send message</button>
+              Consectetur sequi sint quidem cumque consequatur.
+            </p>
           </div>
         </div>
       </div>
     </div>
   )
 }
-
-export default ProfileInfo;

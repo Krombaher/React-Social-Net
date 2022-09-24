@@ -1,0 +1,114 @@
+@import '../../../scss/variables';
+
+//Profile info
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: $grey;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.profileInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 20px 0 20px;
+
+  img {
+    border: 1px solid #968c8c;
+  border-radius: 50%;
+  max-width: 200px;
+  height: 200px;
+  padding: 10px;
+  }
+}
+
+.profileAbout {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.aboutName {
+  border-bottom: 1px solid #968c8c;
+  color: $text__black;
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+.profileInformation{
+  margin-top: 10px;
+  border-bottom: 1px solid #968c8c;
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+// Post
+
+.profilePostSection {
+  margin: 20px 20px 0 230px;
+}
+
+.profilePostAdd {
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    height: 100px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 16px;
+  }
+
+  button {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: $blue;
+    color: $white;
+  }
+}
+
+.post {
+  display: flex;
+  margin-top: 20px;
+}
+
+.postUser {
+  text-align: center;
+
+  img {
+    max-width: 70px;
+    height: 70px;
+  }
+}
+
+.postText::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(40px at top left, transparent 50%, rgba(214, 214, 214, 1.2) 0) no-repeat right bottom;
+}
+
+.postText {
+  width: 100%;
+  position: relative;
+  background-color: $grey;
+  border-radius: 10px 10px 10px 0;
+  margin-left: 15px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
