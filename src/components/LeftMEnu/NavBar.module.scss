@@ -1,0 +1,28 @@
+@import '../../scss/variables';
+
+ul {
+  display: flex;
+}
+
+svg {
+  display: block;
+}
+
+text {
+  display: block;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $white;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  margin: 0 0 0 25px;
+}
+
+a:hover {
+  color: $hover;
+}

@@ -1,14 +1,20 @@
 import React from 'react';
 import { FaReact } from "react-icons/fa";
+import NavBar from '../LeftMEnu/NavBar';
+import s from './Header.module.scss'
 
 function Header() {
   return (
-    <div className='app__header'>
-      <div className='app__header-title'>
-        <FaReact />
-        <h3>Social network</h3>
+    <header className={s.header}>
+      <div className='_container'>
+        <div className={s.headerTop}>
+          <div className={s.headerLogo}>
+            <FaReact /> <h3>Social network</h3>
+          </div>
+          <NavBar />
+        </div>
       </div>
-    </div>
+    </header>
   )
 }
 

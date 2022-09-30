@@ -1,0 +1,31 @@
+@import '../../scss/variables';
+
+.header {
+  background-color: $background;
+  border-radius: 5px;
+  border: 1px solid $border;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLogo {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: $white;
+  margin: 10px 0;
+
+  h3 {
+    margin-left: 10px;
+    font-size: 25px;
+  }
+
+  svg {
+    font-size: 25px;
+  }
+}
+

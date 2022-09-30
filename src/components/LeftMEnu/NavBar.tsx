@@ -5,21 +5,23 @@ import { FiSettings } from "react-icons/fi";
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import { TiMessages } from "react-icons/ti";
 
+import s from './NavBar.module.scss'
+
 function NavBar() {
   return (
-    <div className='app__nav'>
+    <div className={s.nav}>
       <ul>
         <li>
-          <Link className='link' to='/profile'><CgProfile />Profile</Link>
+          <Link className={s.navLink} to='/profile'><CgProfile /><text>Profile</text></Link>
         </li>
         <li>
-          <Link className='link' to='/photos'><MdOutlineAddAPhoto />Photos</Link>
+          <Link className={s.navLink} to='/photos'><MdOutlineAddAPhoto /><text>Photos</text></Link>
         </li>
         <li>
-          <Link className='link' to='/message'><TiMessages />Message</Link>
+          <Link className={s.navLink} to='/message'><TiMessages /><text>Message</text></Link>
         </li>
         <li>
-          <Link className='link' to='/settings'><FiSettings />Settings</Link>
+          <Link className={s.navLink} to='/settings'><FiSettings /><text>Settings</text></Link>
         </li>
       </ul>
     </div>

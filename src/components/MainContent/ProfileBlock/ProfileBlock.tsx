@@ -7,7 +7,11 @@ export const ProfileBlock = (props:ProfilePostProps) => {
   return (
     <div className='app__profile'>
       <ProfileInfo/>
-      <ProfilePost post={props.post}/>
+      <ProfilePost
+        post={props.post}
+        addPost={props.addPost}
+        removePost={props.removePost}
+      />
     </div>
   )
 }
