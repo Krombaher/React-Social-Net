@@ -13,7 +13,7 @@ export const ProfilePost = (props: ProfilePostProps) => {
     setNewPost('')
   }
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setNewPost(event.currentTarget.value)
   }
 
@@ -38,7 +38,7 @@ export const ProfilePost = (props: ProfilePostProps) => {
     <div className={s.profilePostSection}>
       <div className={s.profilePostAdd}>
         <h3>My Post</h3>
-        <input value={newPost} onChange={onChangeHandler}/>
+        <textarea value={newPost} onChange={onChangeHandler}/>
         <button className={s.button} onClick={addPostHandler}>Add Post</button>
       </div>
       {profilePost}

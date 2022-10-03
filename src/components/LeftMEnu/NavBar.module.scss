@@ -17,12 +17,25 @@ text {
   flex-direction: column;
   align-items: center;
   color: $white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 1.2px;
-  margin: 0 0 0 25px;
+  margin: 7px
 }
 
-a:hover {
-  color: $hover;
+.navLink:hover {
+  color: $grey__black;
+}
+
+li {
+  margin-right: 15px;
+}
+
+li:last-child {
+  margin-right: 0;
+}
+
+li:hover {
+  background: #4c9cee;
+  border-radius: 5px;
 }
