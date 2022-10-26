@@ -12,7 +12,7 @@ text {
   display: block;
 }
 
-.navLink {
+a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,11 @@ text {
   margin: 7px
 }
 
-.navLink:hover {
+.a:hover {
+  color: $grey__black;
+}
+
+.active  {
   color: $grey__black;
 }
 

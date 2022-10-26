@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineAddAPhoto } from "react-icons/md";
@@ -12,16 +12,16 @@ function NavBar() {
     <div className={s.nav}>
       <ul>
         <li>
-          <Link className={s.navLink} to='/profile'><CgProfile /><text>Profile</text></Link>
+          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/profile'><CgProfile /><text>Profile</text></NavLink>
         </li>
         <li>
-          <Link className={s.navLink} to='/photos'><MdOutlineAddAPhoto /><text>Photos</text></Link>
+          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/photos'><MdOutlineAddAPhoto /><text>Photos</text></NavLink>
         </li>
+        {/*<li>*/}
+        {/*  <NavLink className={({isActive}) => isActive ? s.active : ''} to='/message'><TiMessages /><text>Message</text></NavLink>*/}
+        {/*</li>*/}
         <li>
-          <Link className={s.navLink} to='/message'><TiMessages /><text>Message</text></Link>
-        </li>
-        <li>
-          <Link className={s.navLink} to='/settings'><FiSettings /><text>Settings</text></Link>
+          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/settings'><FiSettings /><text>Settings</text></NavLink>
         </li>
       </ul>
     </div>

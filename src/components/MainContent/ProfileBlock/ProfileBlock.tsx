@@ -1,17 +1,12 @@
 import React from 'react'
-import { ProfilePostProps } from '../Profile'
-import { ProfileInfo } from './ProfileInfo'
-import { ProfilePost } from './ProfilePost'
+import {ProfileInfo} from './ProfileInfo'
+import {ProfilePostContainer} from "./ProfilePostContainer";
 
-export const ProfileBlock = (props:ProfilePostProps) => {
-  return (
-    <div className='app__profile'>
-      <ProfileInfo/>
-      <ProfilePost
-        post={props.post}
-        addPost={props.addPost}
-        removePost={props.removePost}
-      />
-    </div>
-  )
+export const ProfileBlock = () => {
+    return (
+        <div className='app__profile'>
+            <ProfileInfo/>
+            <ProfilePostContainer/>
+        </div>
+    )
 }
