@@ -5,6 +5,7 @@ import Header from './components/TopMenu/Header';
 import Photos from './components/MainContent/Photos';
 import Settings from './components/MainContent/Settings';
 import './scss/app.scss';
+import {MessageContainer} from "./components/MainContent/MessageBlock/MessageContainer";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                 <Routes>
                     <Route path='/profile' element={<Profile/>}/>
                     <Route path='/photos' element={<Photos/>}/>
-                    {/*<Route path='/message' element={<Message message={props.state.dialogPage.message}/>}/>*/}
+                    <Route path='/message' element={<MessageContainer/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>
             </div>

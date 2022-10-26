@@ -10,7 +10,6 @@ export const ProfileInfo = () => {
           <div className={s.statusOnline}>Online</div>
         </div>
         <img src={user} alt={'photo'}/>
-        <button className={s.button}>Edit</button>
       </div>
       <div className={s.profileUserInfo}>
         <div className={s.userInfo}>

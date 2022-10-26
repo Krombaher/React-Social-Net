@@ -16,11 +16,13 @@ export const ProfilePostContainer = () => {
                         store.dispatch(AddPostActionCreator())
                     )
                 }
+
                 const updateNewPostTextHandler = (message: string) => {
                     return (
                         store.dispatch(UpdateNewPostTextActionCreator(message))
                     )
                 }
+
                 const removePostHandler = (id: string) => {
                     return (
                         store.dispatch(RemovePostsActionCreator(id))
@@ -32,7 +34,7 @@ export const ProfilePostContainer = () => {
                         newPostText={store.getState().profilePage.newPostText}
                         posts={store.getState().profilePage.posts}
                         addPost={addPostHandler}
-                        updateMessage={updateNewPostTextHandler}
+                        updateMessagePost={updateNewPostTextHandler}
                         removePost={removePostHandler}
                     />
                 )

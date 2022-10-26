@@ -7,7 +7,9 @@ const NEW_POST_TEXT = 'NEW-POST-TEXT';
 
 let initialState = {
         newPostText: '',
-        posts: []
+        posts: [
+            {id:v1(), message: 'Hello'}
+        ]
 }
 
 export const profilePageReducer = (state:ProfilePageType = initialState, action: ActionDispatchType) => {

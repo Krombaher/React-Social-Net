@@ -17,9 +17,9 @@ function NavBar() {
         <li>
           <NavLink className={({isActive}) => isActive ? s.active : ''} to='/photos'><MdOutlineAddAPhoto /><text>Photos</text></NavLink>
         </li>
-        {/*<li>*/}
-        {/*  <NavLink className={({isActive}) => isActive ? s.active : ''} to='/message'><TiMessages /><text>Message</text></NavLink>*/}
-        {/*</li>*/}
+        <li>
+          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/message'><TiMessages /><text>Message</text></NavLink>
+        </li>
         <li>
           <NavLink className={({isActive}) => isActive ? s.active : ''} to='/settings'><FiSettings /><text>Settings</text></NavLink>
         </li>

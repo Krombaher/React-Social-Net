@@ -1,4 +1,14 @@
 export type ActionDispatchType = AddPostActionType | RemovePostTextType | UpdatePostTextType
+| AddMessageActionType | UpdateMessageType
+
+export type AddMessageActionType = {
+    type: "ADD-MESSAGE"
+}
+
+export type UpdateMessageType = {
+    type: "NEW-MESSAGE"
+    message: string
+}
 
 export type AddPostActionType = {
     type: "ADD-POST"
@@ -31,13 +41,15 @@ export type ProfilePageType = {
     posts: PostType[]
 }
 
-export type DialogPageType = {
-    message:MessageType[]
+export type MessagePageType = {
+    newMessage: string
+    messages:MessageType[]
 }
 
 export type StateType = {
     profilePage:ProfilePageType
-    // dialogPage:DialogPageType
+    messagePage:MessagePageType
+
 }
 
 export type StoreReduxType = {
