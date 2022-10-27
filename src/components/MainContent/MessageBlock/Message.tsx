@@ -2,34 +2,45 @@ import React, {ChangeEvent} from 'react'
 import user from "../../../assets/Img/user-icon.png";
 import s from '../MessageBlock/Message.module.scss'
 import {MessageType} from "../../../redux/Type";
-import {Avatar, Badge, Button, IconButton, TextField} from "@mui/material";
+import {Avatar, Button, IconButton, TextField} from "@mui/material";
 import {Delete} from "@mui/icons-material";
+import {FriendMessage} from "./FriendMessage";
 
 export type MessageProps = {
     newMessage: string
+    message: MessageType[]
     addMessage: () => void
     updateMessage: (message: string) => void
-    message: MessageType[]
+    removeMessage:(id: string) => void
 }
 
-const Message = (props: MessageProps) => {
+export const Message = (props: MessageProps) => {
 
     const addMessageHandler = () => {
         props.addMessage()
         props.updateMessage('')
     }
-    const updateMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const updateMessageHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateMessage(event.currentTarget.value)
     }
+
+    const removeMessageHandler = (id:string) => {
+        props.removeMessage(id)
+    }
+
     const messageItems = props.message.map(el => {
         return (
             <div key={el.id} className={s.message}>
-                <img src={user} alt="photo"/>
-                <span>{el.name}</span>
-                <span>{el.message}</span>
-                <IconButton aria-label="delete" size="small">
-                    <Delete fontSize="small" />
-                </IconButton>
+                <div className={s.avatarAndName}>
+                    <img src={user} alt="photo"/>
+                    <div className={s.avatarName}>{el.name}</div>
+                </div>
+                <div className={s.messageTextBlock}>
+                    <div className={s.messageText}>{el.message}</div>
+                    <IconButton onClick={() => removeMessageHandler(el.id)} aria-label="delete" size="small">
+                        <Delete fontSize="small"/>
+                    </IconButton>
+                </div>
             </div>
         )
     })
@@ -37,18 +48,28 @@ const Message = (props: MessageProps) => {
     return (
         <div className={s.messageSection}>
             <div className={s.messageUserAvatars}>
-                <Badge color="success" overlap="circular" badgeContent=" " variant="dot">
-                    <Avatar alt="Remy Sharp" src='' sx={{ width: 56, height: 56 }}/>
-                </Badge>
+                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
+                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
+                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
+                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
             </div>
 
+            {messageItems}
+
             <div className={s.messageSendBlock}>
-                <TextField value={props.newMessage} onChange={updateMessage} />
-                <Button onClick={addMessageHandler} variant="contained">Send Message</Button>
+                <TextField
+                    label="Enter message..."
+                    style={{width: '450px', margin: '20px'}}
+                    value={props.newMessage}
+                    onChange={updateMessageHandler}
+                />
+                <Button
+                    style={{width: '150px', marginLeft: '20px'}}
+                    onClick={addMessageHandler}
+                    variant="contained">Send Message
+                </Button>
             </div>
-                {messageItems}
         </div>
     )
 }
 
-export default Message

@@ -1,7 +1,52 @@
 .message {
   img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
+
+  display: flex;
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.messageTextBlock {
+  display: flex;
+  margin-left: 20px;
+}
+
+.messageText {
+  width: 527px;
+  position: relative;
+  word-break: break-word;
+  padding: 10px;
+  background: #F5F7FB;
+  border-radius: 10px 10px 10px 0;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.messageText:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(40px at top left, transparent 50%, rgba(245, 247, 251, 1.2 ) 0) no-repeat right bottom;
+}
+
+.messageUserAvatars {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.messageSendBlock {
+  display: flex;
+  flex-direction: column;
 }
 

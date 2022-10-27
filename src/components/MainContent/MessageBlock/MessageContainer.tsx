@@ -1,7 +1,12 @@
 import React from 'react'
 import {StoreContext} from "../../../StoreContext";
-import Message from "./Message";
-import {AddMessageActionCreator, UpdateMessageActionCreator} from "../../../redux/DialogpageReducer";
+
+import {
+    AddMessageActionCreator,
+    RemoveMessageActionCreator,
+    UpdateMessageActionCreator
+} from "../../../redux/DialogpageReducer";
+import {Message} from "./Message";
 
 export const MessageContainer = () => {
     return (
@@ -20,13 +25,22 @@ export const MessageContainer = () => {
                     )
                 }
 
+                const removeMessageHandler = (id:string) => {
+                    return (
+                        store.dispatch(RemoveMessageActionCreator(id))
+                    )
+                }
+
                 return (
-                    <Message
-                        newMessage={store.getState().messagePage.newMessage}
-                        message={store.getState().messagePage.messages}
-                        addMessage={addMessageHandler}
-                        updateMessage={updateMessageHandler}
-                    />
+                    <>
+                        <Message
+                            newMessage={store.getState().messagePage.newMessage}
+                            message={store.getState().messagePage.messages}
+                            addMessage={addMessageHandler}
+                            updateMessage={updateMessageHandler}
+                            removeMessage={removeMessageHandler}
+                        />
+                    </>
                 )
             }}
         </StoreContext.Consumer>

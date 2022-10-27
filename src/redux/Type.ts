@@ -1,5 +1,7 @@
 export type ActionDispatchType = AddPostActionType | RemovePostTextType | UpdatePostTextType
-| AddMessageActionType | UpdateMessageType
+| AddMessageActionType | UpdateMessageType | RemoveMessageType
+
+//Message type action
 
 export type AddMessageActionType = {
     type: "ADD-MESSAGE"
@@ -9,6 +11,13 @@ export type UpdateMessageType = {
     type: "NEW-MESSAGE"
     message: string
 }
+
+export type RemoveMessageType = {
+    type: "REMOVE_MESSAGE"
+    id: string
+}
+
+//Post type action
 
 export type AddPostActionType = {
     type: "ADD-POST"
@@ -23,6 +32,8 @@ export type UpdatePostTextType = {
     type: "NEW-POST-TEXT"
     message: string
 }
+
+//Type all
 
 export type PostType = {
     id:string
