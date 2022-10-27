@@ -27,6 +27,9 @@ const Message = (props: MessageProps) => {
                 <img src={user} alt="photo"/>
                 <span>{el.name}</span>
                 <span>{el.message}</span>
+                <IconButton aria-label="delete" size="small">
+                    <Delete fontSize="small" />
+                </IconButton>
             </div>
         )
     })
@@ -43,12 +46,7 @@ const Message = (props: MessageProps) => {
                 <TextField value={props.newMessage} onChange={updateMessage} />
                 <Button onClick={addMessageHandler} variant="contained">Send Message</Button>
             </div>
-            <div className={s.messageBlock}>
                 {messageItems}
-                <IconButton aria-label="delete" size="small">
-                    <Delete fontSize="small" />
-                </IconButton>
-            </div>
         </div>
     )
 }
