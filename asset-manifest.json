@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Krombaher/React-Social-Net/static/css/main.9e5bba99.css",
-    "main.js": "/Krombaher/React-Social-Net/static/js/main.e00e2190.js",
+    "main.css": "/Krombaher/React-Social-Net/static/css/main.bc7dd600.css",
+    "main.js": "/Krombaher/React-Social-Net/static/js/main.f27fbcc7.js",
     "static/media/user-icon.png": "/Krombaher/React-Social-Net/static/media/user-icon.2ddc32dfabed38bdebf9.png",
     "index.html": "/Krombaher/React-Social-Net/index.html",
-    "main.9e5bba99.css.map": "/Krombaher/React-Social-Net/static/css/main.9e5bba99.css.map",
-    "main.e00e2190.js.map": "/Krombaher/React-Social-Net/static/js/main.e00e2190.js.map"
+    "main.bc7dd600.css.map": "/Krombaher/React-Social-Net/static/css/main.bc7dd600.css.map",
+    "main.f27fbcc7.js.map": "/Krombaher/React-Social-Net/static/js/main.f27fbcc7.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e5bba99.css",
-    "static/js/main.e00e2190.js"
+    "static/css/main.bc7dd600.css",
+    "static/js/main.f27fbcc7.js"
   ]
 }
