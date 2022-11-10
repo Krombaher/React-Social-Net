@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {
     ActionDispatchType, AddMessageActionType,
-    MessagePageType, RemoveMessageType, RemovePostTextType, UpdateMessageType,
+    MessagePageType, RemoveMessageActionType, UpdateMessageActionType,
 } from "./Type";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
@@ -11,13 +11,11 @@ const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 let initialState = {
     newMessage: '',
     messages: [
-        {id: v1(), photo: 'img', name: 'Victor', message: 'Hello'},
-        {id: v1(), photo: 'img', name: 'Dima', message: 'Yo'},
-        {id: v1(), photo: 'img', name: 'Valera', message: 'How are you?'},
+        {id: v1(), photo: 'img', name: 'Name', message: 'Hello'},
     ]
 }
 
-export const dialogPageReducer = (state: MessagePageType = initialState, action: ActionDispatchType) => {
+export const dialogPageReducer = (state: MessagePageType = initialState, action: ActionDispatchType): MessagePageType => {
 
     switch (action.type) {
 
@@ -28,18 +26,15 @@ export const dialogPageReducer = (state: MessagePageType = initialState, action:
                 name: 'Name',
                 message: state.newMessage
             }
-            state.messages = [...state.messages, newMessage]
-            return state
+            return {...state, messages:[...state.messages, newMessage]}
         }
 
         case NEW_MESSAGE: {
-            state.newMessage = action.message
-            return state
+            return {...state, newMessage: action.message}
         }
 
         case REMOVE_MESSAGE: {
-            state.messages = state.messages.filter(m => m.id !== action.id)
-            return state
+            return {...state, messages:state.messages.filter(m => m.id !== action.id)}
         }
 
         default:
@@ -47,12 +42,12 @@ export const dialogPageReducer = (state: MessagePageType = initialState, action:
     }
 }
 
-export const AddMessageActionCreator = () => {
-    return <AddMessageActionType>{type: ADD_MESSAGE}
+export const AddMessageActionCreator = ():AddMessageActionType => {
+    return {type: ADD_MESSAGE}
 }
-export const UpdateMessageActionCreator = (message: string) => {
-    return <UpdateMessageType>{type: NEW_MESSAGE, message: message}
+export const UpdateMessageActionCreator = (message: string):UpdateMessageActionType => {
+    return {type: NEW_MESSAGE, message: message}
 }
-export const RemoveMessageActionCreator = (id: string) => {
-    return <RemoveMessageType>{type: REMOVE_MESSAGE, id: id}
+export const RemoveMessageActionCreator = (id: string):RemoveMessageActionType => {
+    return {type: REMOVE_MESSAGE, id: id}
 }

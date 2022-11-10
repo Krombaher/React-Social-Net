@@ -1,48 +1,45 @@
 import React from 'react'
-import {StoreContext} from "../../../StoreContext";
-
 import {
     AddMessageActionCreator,
     RemoveMessageActionCreator,
     UpdateMessageActionCreator
 } from "../../../redux/DialogpageReducer";
 import {Message} from "./Message";
+import {connect} from "react-redux";
+import {AppStateType} from "../../../redux/Redux-store";
+import {Dispatch} from "redux";
+import {MessageType} from "../../../redux/Type";
 
-export const MessageContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-
-                const addMessageHandler = () => {
-                    return (
-                        store.dispatch(AddMessageActionCreator())
-                    )
-                }
-
-                const updateMessageHandler = (message: string) => {
-                    return (
-                        store.dispatch(UpdateMessageActionCreator(message))
-                    )
-                }
-
-                const removeMessageHandler = (id:string) => {
-                    return (
-                        store.dispatch(RemoveMessageActionCreator(id))
-                    )
-                }
-
-                return (
-                    <>
-                        <Message
-                            newMessage={store.getState().messagePage.newMessage}
-                            message={store.getState().messagePage.messages}
-                            addMessage={addMessageHandler}
-                            updateMessage={updateMessageHandler}
-                            removeMessage={removeMessageHandler}
-                        />
-                    </>
-                )
-            }}
-        </StoreContext.Consumer>
-    )
+type MapStatePropsType = {
+    newMessage:string
+    message:MessageType[]
 }
+
+type MapDispatchPropsType = {
+    addMessage: () => void
+    updateMessage: (message: string) => void
+    removeMessage:(id: string) => void
+}
+
+let mapStateToProps = (state: AppStateType):MapStatePropsType => {
+    return {
+        newMessage:state.messagePage.newMessage,
+        message:state.messagePage.messages
+    }
+}
+
+let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
+    return {
+        addMessage:() => {
+            dispatch(AddMessageActionCreator())
+        },
+        updateMessage: (message: string) => {
+            dispatch(UpdateMessageActionCreator(message))
+        },
+        removeMessage:(id: string) => {
+            dispatch(RemoveMessageActionCreator(id))
+        }
+    }
+}
+
+export const MessageContainer = connect(mapStateToProps, mapDispatchToProps)(Message)

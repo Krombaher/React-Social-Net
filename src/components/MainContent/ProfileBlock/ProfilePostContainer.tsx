@@ -1,44 +1,43 @@
-import {ProfilePost} from "./ProfilePost";
-import {StoreContext} from "../../../StoreContext";
 import {
-    AddPostActionCreator,
+    AddPostActionCreator, PostType,
     RemovePostsActionCreator,
     UpdateNewPostTextActionCreator
 } from "../../../redux/ProfilepageReducer";
+import {connect} from "react-redux";
+import {AppStateType} from "../../../redux/Redux-store";
+import {Dispatch} from "redux";
+import {ProfilePost} from "./ProfilePost";
 
-export const ProfilePostContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-
-                const addPostHandler = () => {
-                    return (
-                        store.dispatch(AddPostActionCreator())
-                    )
-                }
-
-                const updateNewPostTextHandler = (message: string) => {
-                    return (
-                        store.dispatch(UpdateNewPostTextActionCreator(message))
-                    )
-                }
-
-                const removePostHandler = (id: string) => {
-                    return (
-                        store.dispatch(RemovePostsActionCreator(id))
-                    )
-                }
-
-                return (
-                    <ProfilePost
-                        newPostText={store.getState().profilePage.newPostText}
-                        posts={store.getState().profilePage.posts}
-                        addPost={addPostHandler}
-                        updateMessagePost={updateNewPostTextHandler}
-                        removePost={removePostHandler}
-                    />
-                )
-            }}
-        </StoreContext.Consumer>
-    )
+type MapStatePropsType = {
+    newPostText:string
+    posts:PostType[]
 }
+
+type MapDispatchPropsType = {
+    addPost:() => void
+    updateMessagePost:(message:string) => void
+    removePost:(id:string) => void
+}
+
+let mapStateToProps = (state: AppStateType):MapStatePropsType => {
+    return {
+        newPostText: state.profilePage.newPostText,
+        posts: state.profilePage.posts
+    }
+}
+
+let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
+    return {
+        addPost:() => {
+            dispatch(AddPostActionCreator())
+        },
+        updateMessagePost:(message:string) => {
+            dispatch(UpdateNewPostTextActionCreator(message))
+        },
+        removePost:(id:string) => {
+            dispatch(RemovePostsActionCreator(id))
+        }
+    }
+}
+
+export const ProfilePostContainer = connect(mapStateToProps, mapDispatchToProps)(ProfilePost)

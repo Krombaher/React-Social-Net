@@ -1,5 +1,6 @@
 import React from 'react'
-import s from '../MessageBlock/Message.module.scss'
+import s from '../MessageBlock/FriendMessage.module.scss'
+import user from "../../../assets/Img/user-icon.png";
 import {v1} from "uuid";
 
 
@@ -17,13 +18,13 @@ export const FriendMessage = (props: MessageProps) => {
 
     const friendMessageItems = friendMessage.map(el => {
         return (
-            <div key={el.id} className={s.messageF}>
-                <div className={s.avatarAndNameF}>
-                    <img src='' alt="photo"/>
-                    <div className={s.avatarNameF}>{el.name}</div>
+            <div key={el.id} className={s.message}>
+                <div className={s.avatarAndName}>
+                    <img src={user} alt="photo"/>
+                    <div className={s.avatarName}>{el.name}</div>
                 </div>
-                <div className={s.messageTextBlockF}>
-                    <div className={s.messageTextF}>{el.message}</div>
+                <div className={s.messageTextBlock}>
+                    <div className={s.messageText}>{el.message}</div>
                 </div>
             </div>
         )

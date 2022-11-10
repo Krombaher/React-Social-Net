@@ -47,13 +47,8 @@ export const Message = (props: MessageProps) => {
 
     return (
         <div className={s.messageSection}>
-            <div className={s.messageUserAvatars}>
-                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
-                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
-                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
-                <Avatar alt="Remy Sharp" src='' sx={{marginRight: 1, width: 56, height: 56}}/>
-            </div>
 
+            <FriendMessage/>
             {messageItems}
 
             <div className={s.messageSendBlock}>

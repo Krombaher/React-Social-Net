@@ -1,5 +1,8 @@
-export type ActionDispatchType = AddPostActionType | RemovePostTextType | UpdatePostTextType
-| AddMessageActionType | UpdateMessageType | RemoveMessageType
+import {PostType} from "./ProfilepageReducer";
+
+export type ActionDispatchType = AddPostActionType | RemovePostActionType | UpdatePostActionType
+
+| AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType
 
 //Message type action
 
@@ -7,12 +10,12 @@ export type AddMessageActionType = {
     type: "ADD-MESSAGE"
 }
 
-export type UpdateMessageType = {
+export type UpdateMessageActionType = {
     type: "NEW-MESSAGE"
     message: string
 }
 
-export type RemoveMessageType = {
+export type RemoveMessageActionType = {
     type: "REMOVE_MESSAGE"
     id: string
 }
@@ -23,22 +26,17 @@ export type AddPostActionType = {
     type: "ADD-POST"
 }
 
-export type RemovePostTextType = {
+export type RemovePostActionType = {
     type: "REMOVE-POST"
     id: string
 }
 
-export type UpdatePostTextType = {
+export type UpdatePostActionType = {
     type: "NEW-POST-TEXT"
     message: string
 }
 
 //Type all
-
-export type PostType = {
-    id:string
-    message:string
-}
 
 export type MessageType = {
     id: string
