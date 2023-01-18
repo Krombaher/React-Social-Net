@@ -1,19 +1,14 @@
 import {v1} from "uuid";
-import {ActionDispatchType, AddPostActionType, RemovePostActionType, UpdatePostActionType} from "./Type";
+import {ActionDispatchType} from "./Type";
 
 export type PostType = {
     id:string
     message:string
 }
-
 export type InitialStateType = {
     newPostText: string
     posts: PostType[]
 }
-
-const ADD_POST = 'ADD-POST';
-const REMOVE_POST = 'REMOVE-POST';
-const NEW_POST_TEXT = 'NEW-POST-TEXT';
 
 let initialState: InitialStateType = {
         newPostText: '',
@@ -26,14 +21,14 @@ export const profilePageReducer = (state: InitialStateType = initialState, actio
 
     switch (action.type) {
 
-        case ADD_POST:
+        case 'ADD-POST':
             let newPost = {id: v1(), message: state.newPostText}
             return {...state, posts:[...state.posts, newPost]}
 
-        case NEW_POST_TEXT:
+        case 'NEW-POST-TEXT':
             return {...state, newPostText:action.message}
 
-        case REMOVE_POST:
+        case 'REMOVE-POST':
             return {...state, posts:state.posts.filter(p => p.id !== action.id)}
 
         default:
@@ -41,12 +36,12 @@ export const profilePageReducer = (state: InitialStateType = initialState, actio
     }
 }
 
-export const AddPostActionCreator = ():AddPostActionType => {
-    return {type: ADD_POST}
+export const AddPostAC = () => {
+    return {type: 'ADD-POST'} as const
 }
-export const UpdateNewPostTextActionCreator = (message:string):UpdatePostActionType => {
-    return {type: NEW_POST_TEXT, message: message}
+export const UpdateNewPostTextAC = (message:string) => {
+    return {type: 'NEW-POST-TEXT', message: message} as const
 }
-export const RemovePostsActionCreator = (id:string):RemovePostActionType => {
-    return {type: REMOVE_POST, id:id}
+export const RemovePostsAC = (id:string) => {
+    return {type: 'REMOVE-POST', id:id} as const
 }

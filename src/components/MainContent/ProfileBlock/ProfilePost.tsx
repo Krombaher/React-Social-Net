@@ -1,8 +1,8 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, {ChangeEvent} from 'react'
 import user from '../../../assets/Img/user-icon.png'
 import {AiOutlineDelete} from "react-icons/ai";
 import s from './ProfileBlock.module.scss'
-import {Button, Rating, Stack} from "@mui/material";
+import {Button} from "@mui/material";
 import {PostType} from "../../../redux/ProfilepageReducer";
 
 export type ProfilePostProps = {
@@ -45,7 +45,6 @@ export const ProfilePost = (props: ProfilePostProps) => {
                 <h3>My Post</h3>
                 <textarea value={props.newPostText} onChange={updateMessagePost}/>
                 <Button style={{width: '150px'}} onClick={addPostHandler} variant="contained">Add Post</Button>
-                {/*<button className={s.button} onClick={addPostHandler}>Add Post</button>*/}
             </div>
             {profilePost}
         </div>

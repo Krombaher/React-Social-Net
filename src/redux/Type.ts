@@ -1,40 +1,22 @@
-import {PostType} from "./ProfilepageReducer";
+import {AddPostAC, PostType, RemovePostsAC, UpdateNewPostTextAC} from "./ProfilepageReducer";
+import {AddMessageAC, RemoveMessageAC, UpdateMessageAC} from "./DialogpageReducer";
+import {followAC, unfollowAC} from "./UsersReducer";
 
 export type ActionDispatchType = AddPostActionType | RemovePostActionType | UpdatePostActionType
 
-| AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType
+| AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType | FollowAT | UnFollowAT
 
 //Message type action
-
-export type AddMessageActionType = {
-    type: "ADD-MESSAGE"
-}
-
-export type UpdateMessageActionType = {
-    type: "NEW-MESSAGE"
-    message: string
-}
-
-export type RemoveMessageActionType = {
-    type: "REMOVE_MESSAGE"
-    id: string
-}
-
+export type AddMessageActionType = ReturnType<typeof AddMessageAC>
+export type UpdateMessageActionType = ReturnType<typeof UpdateMessageAC>
+export type RemoveMessageActionType = ReturnType<typeof RemoveMessageAC>
 //Post type action
-
-export type AddPostActionType = {
-    type: "ADD-POST"
-}
-
-export type RemovePostActionType = {
-    type: "REMOVE-POST"
-    id: string
-}
-
-export type UpdatePostActionType = {
-    type: "NEW-POST-TEXT"
-    message: string
-}
+export type AddPostActionType = ReturnType<typeof AddPostAC>
+export type RemovePostActionType = ReturnType<typeof UpdateNewPostTextAC>
+export type UpdatePostActionType = ReturnType<typeof RemovePostsAC>
+//Users type action
+export type FollowAT = ReturnType<typeof followAC>
+export type UnFollowAT = ReturnType<typeof unfollowAC>
 
 //Type all
 

@@ -6,6 +6,7 @@ import Photos from './components/MainContent/Photos';
 import Settings from './components/MainContent/Settings';
 import './scss/app.scss';
 import {MessageContainer} from "./components/MainContent/MessageBlock/MessageContainer";
+import {UsersContainer} from "./components/MainContent/UsersBlock/UsersContainer";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path='/photos' element={<Photos/>}/>
                     <Route path='/message' element={<MessageContainer/>}/>
                     <Route path='/settings' element={<Settings/>}/>
+                    <Route path='/users' element={<UsersContainer/>}/>
                 </Routes>
             </div>
         </div>

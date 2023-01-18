@@ -1,12 +1,5 @@
 import {v1} from "uuid";
-import {
-    ActionDispatchType, AddMessageActionType,
-    MessagePageType, RemoveMessageActionType, UpdateMessageActionType,
-} from "./Type";
-
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const NEW_MESSAGE = 'NEW-MESSAGE';
-const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
+import {ActionDispatchType, MessagePageType,} from "./Type";
 
 let initialState = {
     newMessage: '',
@@ -18,8 +11,7 @@ let initialState = {
 export const dialogPageReducer = (state: MessagePageType = initialState, action: ActionDispatchType): MessagePageType => {
 
     switch (action.type) {
-
-        case ADD_MESSAGE: {
+        case 'ADD-MESSAGE': {
             let newMessage = {
                 id: v1(),
                 photo: 'img',
@@ -29,11 +21,11 @@ export const dialogPageReducer = (state: MessagePageType = initialState, action:
             return {...state, messages:[...state.messages, newMessage]}
         }
 
-        case NEW_MESSAGE: {
+        case 'NEW-MESSAGE': {
             return {...state, newMessage: action.message}
         }
 
-        case REMOVE_MESSAGE: {
+        case 'REMOVE_MESSAGE': {
             return {...state, messages:state.messages.filter(m => m.id !== action.id)}
         }
 
@@ -42,12 +34,12 @@ export const dialogPageReducer = (state: MessagePageType = initialState, action:
     }
 }
 
-export const AddMessageActionCreator = ():AddMessageActionType => {
-    return {type: ADD_MESSAGE}
+export const AddMessageAC = () => {
+    return {type: 'ADD-MESSAGE'} as const
 }
-export const UpdateMessageActionCreator = (message: string):UpdateMessageActionType => {
-    return {type: NEW_MESSAGE, message: message}
+export const UpdateMessageAC = (message: string) => {
+    return {type: 'NEW-MESSAGE', message: message} as const
 }
-export const RemoveMessageActionCreator = (id: string):RemoveMessageActionType => {
-    return {type: REMOVE_MESSAGE, id: id}
+export const RemoveMessageAC = (id: string) => {
+    return {type: 'REMOVE_MESSAGE', id: id} as const
 }

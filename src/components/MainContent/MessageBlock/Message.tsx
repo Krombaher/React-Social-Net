@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react'
 import user from "../../../assets/Img/user-icon.png";
 import s from '../MessageBlock/Message.module.scss'
 import {MessageType} from "../../../redux/Type";
-import {Avatar, Button, IconButton, TextField} from "@mui/material";
+import {Button, IconButton, TextField} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 import {FriendMessage} from "./FriendMessage";
 

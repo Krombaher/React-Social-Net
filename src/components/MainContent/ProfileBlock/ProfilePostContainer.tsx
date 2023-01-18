@@ -1,8 +1,4 @@
-import {
-    AddPostActionCreator, PostType,
-    RemovePostsActionCreator,
-    UpdateNewPostTextActionCreator
-} from "../../../redux/ProfilepageReducer";
+import {AddPostAC, PostType, RemovePostsAC, UpdateNewPostTextAC,} from "../../../redux/ProfilepageReducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/Redux-store";
 import {Dispatch} from "redux";
@@ -29,13 +25,13 @@ let mapStateToProps = (state: AppStateType):MapStatePropsType => {
 let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
     return {
         addPost:() => {
-            dispatch(AddPostActionCreator())
+            dispatch(AddPostAC())
         },
         updateMessagePost:(message:string) => {
-            dispatch(UpdateNewPostTextActionCreator(message))
+            dispatch(UpdateNewPostTextAC(message))
         },
         removePost:(id:string) => {
-            dispatch(RemovePostsActionCreator(id))
+            dispatch(RemovePostsAC(id))
         }
     }
 }

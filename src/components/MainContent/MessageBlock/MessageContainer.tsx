@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-    AddMessageActionCreator,
-    RemoveMessageActionCreator,
-    UpdateMessageActionCreator
-} from "../../../redux/DialogpageReducer";
+import {AddMessageAC, RemoveMessageAC, UpdateMessageAC,} from "../../../redux/DialogpageReducer";
 import {Message} from "./Message";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/Redux-store";
@@ -31,13 +27,13 @@ let mapStateToProps = (state: AppStateType):MapStatePropsType => {
 let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
     return {
         addMessage:() => {
-            dispatch(AddMessageActionCreator())
+            dispatch(AddMessageAC())
         },
         updateMessage: (message: string) => {
-            dispatch(UpdateMessageActionCreator(message))
+            dispatch(UpdateMessageAC(message))
         },
         removeMessage:(id: string) => {
-            dispatch(RemoveMessageActionCreator(id))
+            dispatch(RemoveMessageAC(id))
         }
     }
 }
