@@ -1,10 +1,11 @@
-type UsersReducerAT = FollowAT | UnFollowAT | SetUsersAT | SetCurrentPageAT | SetTotalUsersCountAT
+type UsersReducerAT = FollowAT | UnFollowAT | SetUsersAT | SetCurrentPageAT | SetTotalUsersCountAT | SetIsFetchingAT
 
 type FollowAT = ReturnType<typeof followAC>
 type UnFollowAT = ReturnType<typeof unfollowAC>
 type SetUsersAT = ReturnType<typeof setUsersAC>
 type SetCurrentPageAT = ReturnType<typeof setCurrentPageAC>
 type SetTotalUsersCountAT = ReturnType<typeof setTotalUsersCountAC>
+type SetIsFetchingAT = ReturnType<typeof setIsFetchingAC>
 
 export type UsersType = {
     id: string
@@ -21,13 +22,15 @@ export type InitialStateType = {
     pageSize:number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 let initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 export const UsersReducer = (state: InitialStateType = initialState, action: UsersReducerAT): InitialStateType => {
@@ -48,6 +51,9 @@ export const UsersReducer = (state: InitialStateType = initialState, action: Use
 
         case 'SET_CURRENT_PAGE':
             return {...state, currentPage: action.currentPage}
+
+        case 'SET_IS_FETCHING':
+            return {...state, isFetching: action.isFetching}
 
         default :
             return state
@@ -71,5 +77,9 @@ export const setTotalUsersCountAC = (totalUsersCount: number) => {
 
 export const setCurrentPageAC = (currentPage:number) => {
     return {type: 'SET_CURRENT_PAGE', currentPage} as const
+}
+
+export const setIsFetchingAC = (isFetching:boolean) => {
+    return {type: 'SET_IS_FETCHING', isFetching} as const
 }
 
