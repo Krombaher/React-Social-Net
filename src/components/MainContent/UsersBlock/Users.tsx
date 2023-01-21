@@ -3,6 +3,8 @@ import user from '../../../assets/Img/user-icon.png';
 import s from './Users.module.scss'
 import PaginationControlled from "../../Pagination/PaginationControlled";
 import {UsersType} from "../../../redux/UsersReducer";
+import {CgProfile} from "react-icons/cg";
+import {NavLink} from "react-router-dom";
 
 export type UsersPropsType = {
     users: UsersType[]
@@ -14,7 +16,7 @@ export type UsersPropsType = {
     setUser: (users: UsersType[]) => void
     setTotalUsersCountAC: (totalUsersCount: number) => void
     setCurrentPage: (currentPage: number) => void
-    onPageChanged:(pagesCount: number) => void
+    onPageChanged: (pagesCount: number) => void
 
 }
 
@@ -24,7 +26,9 @@ export const Users = (props: UsersPropsType) => {
         return (
             <div key={el.id} className={s.usersBlock}>
                 <h3>{el.name}</h3>
-                <img src={el.photos.small != null ? el.photos.small : user} alt={'img'}/>
+                <NavLink to = {'/profile/' + el.id}>
+                    <img src={el.photos.small != null ? el.photos.small : user} alt={'img'}/>
+                </NavLink>
                 <span>Follow</span>
                 {
                     el.followed ? <button onClick={() => props.removeFollowUser(el.id)}>unFollow</button>

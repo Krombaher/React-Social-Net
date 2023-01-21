@@ -10,7 +10,8 @@ export type PaginationControlledPropsType = {
 }
 
 export default function PaginationControlled(props: PaginationControlledPropsType) {
-    const [page, setPage] = React.useState(1);
+    const [page, setPage] = React.useState<number>(props.currentPage);
+
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
         props.onPageChanged(value)
