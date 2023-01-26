@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/React-Social-Net/static/css/main.bc7dd600.css",
-    "main.js": "/React-Social-Net/static/js/main.09409735.js",
+    "main.css": "/React-Social-Net/static/css/main.91eb161d.css",
+    "main.js": "/React-Social-Net/static/js/main.7a58daad.js",
     "static/media/user-icon.png": "/React-Social-Net/static/media/user-icon.2ddc32dfabed38bdebf9.png",
     "index.html": "/React-Social-Net/index.html",
-    "main.bc7dd600.css.map": "/React-Social-Net/static/css/main.bc7dd600.css.map",
-    "main.09409735.js.map": "/React-Social-Net/static/js/main.09409735.js.map"
+    "main.91eb161d.css.map": "/React-Social-Net/static/css/main.91eb161d.css.map",
+    "main.7a58daad.js.map": "/React-Social-Net/static/js/main.7a58daad.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc7dd600.css",
-    "static/js/main.09409735.js"
+    "static/css/main.91eb161d.css",
+    "static/js/main.7a58daad.js"
   ]
 }
