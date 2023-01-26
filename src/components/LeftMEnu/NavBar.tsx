@@ -12,19 +12,19 @@ function NavBar() {
     <div className={s.nav}>
       <ul>
         <li>
-          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/profile'><CgProfile /><text>Profile</text></NavLink>
+          <NavLink className={(isActive) => isActive ? s.active : ''} to='/profile'><CgProfile /><text>Profile</text></NavLink>
         </li>
         <li>
-          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/photos'><MdOutlineAddAPhoto /><text>Photos</text></NavLink>
+          <NavLink className={(isActive) => isActive ? s.active : ''} to='/photos'><MdOutlineAddAPhoto /><text>Photos</text></NavLink>
         </li>
         <li>
-          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/message'><TiMessages /><text>Message</text></NavLink>
+          <NavLink className={(isActive) => isActive ? s.active : ''} to='/message'><TiMessages /><text>Message</text></NavLink>
         </li>
         <li>
-          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/settings'><FiSettings /><text>Settings</text></NavLink>
+          <NavLink className={(isActive) => isActive ? s.active : ''} to='/settings'><FiSettings /><text>Settings</text></NavLink>
         </li>
         <li>
-          <NavLink className={({isActive}) => isActive ? s.active : ''} to='/users'><FiSettings /><text>Users</text></NavLink>
+          <NavLink className={(isActive) => isActive ? s.active : ''} to='/users'><FiSettings /><text>Users</text></NavLink>
         </li>
       </ul>
     </div>

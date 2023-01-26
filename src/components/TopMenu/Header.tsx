@@ -2,6 +2,7 @@ import React from 'react';
 import { FaReact } from "react-icons/fa";
 import NavBar from '../LeftMEnu/NavBar';
 import s from './Header.module.scss'
+import {NavLink} from "react-router-dom";
 
 function Header() {
   return (
@@ -12,6 +13,9 @@ function Header() {
             <FaReact /> <h3>Social network</h3>
           </div>
           <NavBar />
+          <div>
+            <NavLink to={'/login'}>Login</NavLink>
+          </div>
         </div>
       </div>
     </header>

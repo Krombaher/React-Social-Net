@@ -33,7 +33,7 @@ let initialState: InitialStateType = {
     isFetching: false
 }
 
-export const UsersReducer = (state: InitialStateType = initialState, action: UsersReducerAT): InitialStateType => {
+export const usersReducer = (state: InitialStateType = initialState, action: UsersReducerAT): InitialStateType => {
     switch (action.type) {
 
         case 'FOLLOW':
