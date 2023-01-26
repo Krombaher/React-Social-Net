@@ -16,14 +16,18 @@
 
   button {
     width: 100px;
-    background: #0066CC;
+    background: #4141d5;
     border-radius: 10px;
     font-size: 16px;
     line-height: 20px;
     font-weight: 500;
     border: none;
     color: white;
-    padding: 3px;
+    padding: 5px;
+  }
+
+  button:disabled {
+    background: #4c9cee;
   }
 }
 

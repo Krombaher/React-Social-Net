@@ -16,7 +16,6 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             <div className={s.profileUser}>
                 <div className={s.profileStatus}>
                     <div className={s.statusName}>{props.profile.fullName}</div>
-                    <div className={s.statusOnline}>Online</div>
                 </div>
                 <img src={props.profile.photos.large} alt={'photo'}/>
             </div>

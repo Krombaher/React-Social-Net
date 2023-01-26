@@ -4,7 +4,6 @@ import s from './Users.module.scss'
 import PaginationControlled from "../../Pagination/PaginationControlled";
 import {UsersType} from "../../../redux/UsersReducer";
 import {NavLink} from "react-router-dom";
-import {deleteFollowUser, postFollowUser} from "../../../Api/Api";
 
 export type UsersPropsType = {
     users: UsersType[]
@@ -12,14 +11,16 @@ export type UsersPropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    addFollowUser: (userID: string) => void
-    removeFollowUser: (userID: string) => void
-    setUser: (users: UsersType[]) => void
+    followingInProgress: string[]
+    setUsersAC: (users: UsersType[]) => void
     setTotalUsersCountAC: (totalUsersCount: number) => void
-    setCurrentPage: (currentPage: number) => void
-    setIsFetching: (isFetching: boolean) => void
-    onPageChanged: (pagesCount: number) => void
-
+    setCurrentPageAC: (currentPage: number) => void
+    setIsFetchingAC: (isFetching: boolean) => void
+    setFollowingProgressAC: (isFetching: boolean, userId: string) => void
+    getUsersTC: (currentPage: number, pageSize: number) => void
+    followTC: (userID: string) => void
+    unfollowTC: (userID: string) => void
+    onPageChanged:(pagesCount: number) => void
 }
 
 export const Users = (props: UsersPropsType) => {
@@ -35,23 +36,11 @@ export const Users = (props: UsersPropsType) => {
                 {
                     el.followed
                         ?
-                        <button onClick={() => {
-                            deleteFollowUser(el.id)
-                                .then(data => {
-                                    if(data.resultCode === 0) {
-                                        props.removeFollowUser(el.id)
-                                    }
-                                })
-                        }}>unFollow</button>
+                        <button disabled={props.followingInProgress.some(id => id === el.id)}
+                                onClick={() => {props.unfollowTC(el.id)}}>unFollow</button>
                         :
-                        <button onClick={() => {
-                            postFollowUser(el.id)
-                                .then(data => {
-                                    if(data.resultCode === 0) {
-                                        props.addFollowUser(el.id)
-                                    }
-                                })
-                        }}>follow</button>
+                        <button disabled={props.followingInProgress.some(id => id === el.id)}
+                                onClick={() => {props.followTC(el.id)}}>follow</button>
                 }
             </div>
         )

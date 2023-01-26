@@ -3,18 +3,10 @@ import s from '../MessageBlock/FriendMessage.module.scss'
 import user from "../../../assets/Img/user-icon.png";
 import {v1} from "uuid";
 
-
-export type MessageProps = {
-
-}
-
-export const FriendMessage = (props: MessageProps) => {
+export const FriendMessage = () => {
     const friendMessage = [
         {id: v1(), photo: 'img', name: 'Victor', message: 'Hello'},
     ]
-    const addMessageHandler = () => {}
-    const updateMessageHandler = () => {}
-    const removeMessageHandler = () => {}
 
     const friendMessageItems = friendMessage.map(el => {
         return (

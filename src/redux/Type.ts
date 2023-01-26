@@ -6,11 +6,11 @@ import {
 
 } from "./ProfilepageReducer";
 import {AddMessageAC, RemoveMessageAC, UpdateMessageAC} from "./DialogpageReducer";
-import {followAC, unfollowAC} from "./UsersReducer";
+import {followAC, setFollowingProgressAC, unfollowAC} from "./UsersReducer";
 import {setUserDataAC} from "./AuthReducer";
 
 export type ActionDispatchType = AddPostActionType | RemovePostActionType | UpdatePostActionType
-    | AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType | FollowAT | UnFollowAT |
+    | AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType |
     SetUserProfileACActionType | SetUserDataAT
 
 //Message type action
@@ -22,9 +22,6 @@ export type AddPostActionType = ReturnType<typeof addPostAC>
 export type RemovePostActionType = ReturnType<typeof updateNewPostTextAC>
 export type UpdatePostActionType = ReturnType<typeof removePostsAC>
 export type SetUserProfileACActionType = ReturnType<typeof setUserProfileAC>
-//Users type action
-export type FollowAT = ReturnType<typeof followAC>
-export type UnFollowAT = ReturnType<typeof unfollowAC>
 //auth
 export type SetUserDataAT = ReturnType<typeof setUserDataAC>
 

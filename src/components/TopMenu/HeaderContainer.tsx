@@ -11,8 +11,8 @@ export class HeaderBlock extends React.Component<any, any> {
             withCredentials: true
         })
             .then(response => {
-                if(response.data.resultCode === 0) {
-                    console.log(response)
+                console.log(response)
+                if (response.data.resultCode === 0) {
                     let {id, login, email} = response.data.data
                     this.props.setUserDataAC(id, login, email)
                 }

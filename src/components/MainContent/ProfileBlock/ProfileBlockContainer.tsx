@@ -1,9 +1,8 @@
 import React from 'react'
-import axios from "axios";
 import {AppStateType} from "../../../redux/Redux-store";
 import {connect} from "react-redux";
 import {
-    addPostAC,
+    addPostAC, getProfileUserTC,
     PostType, ProfileType,
     removePostsAC,
     setUserProfileAC,
@@ -12,7 +11,6 @@ import {
 import {ProfileInfo} from "./ProfileInfo";
 import {ProfilePost} from "./ProfilePost";
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {getProfileUser} from "../../../Api/Api";
 
 export type ProfileBlockContainerPropsType = {
     newPostText: string
@@ -22,6 +20,7 @@ export type ProfileBlockContainerPropsType = {
     updateMessagePost: (message: string) => void
     removePost: (id: string) => void
     setUserProfileAC: (profile: null) => void
+    getProfileUserTC:(userId:string) => void
 }
 
 type MapStatePropsType = {
@@ -41,9 +40,7 @@ export class ProfileBlockContainer extends React.Component<ProfilePropsType, any
     componentDidMount() {
         let userId = this.props.match.params.userId
         if(!userId) {userId = '2'}
-
-        getProfileUser(userId)
-            .then(data => this.props.setUserProfileAC(data))
+        this.props.getProfileUserTC(userId)
     }
 
     render() {
@@ -75,5 +72,6 @@ export const ProfileContainer = connect(mapStateToProps,
         addPost: addPostAC,
         updateMessagePost: updateNewPostTextAC,
         removePost: removePostsAC,
-        setUserProfileAC: setUserProfileAC
+        setUserProfileAC: setUserProfileAC,
+        getProfileUserTC: getProfileUserTC
     })(WithURLDataContainerComponent)

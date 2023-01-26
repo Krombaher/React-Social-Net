@@ -1,5 +1,7 @@
 import {v1} from "uuid";
 import {ActionDispatchType} from "./Type";
+import {Dispatch} from "react";
+import {getProfileUser} from "../Api/Api";
 
 export type PostType = {
     id:string
@@ -12,7 +14,6 @@ export type InitialStateType = {
 }
 
 //Profile TYpe
-
 type ContactsType = {
     github: string
     vk: string
@@ -66,7 +67,7 @@ export const profilePageReducer = (state: InitialStateType = initialState, actio
             return state
     }
 }
-
+//Action
 export const addPostAC = () => {
     return {type: 'ADD-POST'} as const
 }
@@ -78,4 +79,9 @@ export const removePostsAC = (id:string) => {
 }
 export const setUserProfileAC = (profile:null) => {
     return {type: 'SET_USER_PROFILE', profile} as const
+}
+//Thunk
+export const getProfileUserTC = (userId:string) => (dispatch:Dispatch<ActionDispatchType>) => {
+    getProfileUser(userId)
+        .then(data => dispatch(setUserProfileAC(data)))
 }
