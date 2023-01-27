@@ -28,3 +28,8 @@ export const deleteFollowUser = (id:string) => {
         .then(response => response.data)
 }
 
+export const getAuthAPI = () => {
+    return instance.get(`auth/me`)
+        .then(response => response.data)
+}
+
