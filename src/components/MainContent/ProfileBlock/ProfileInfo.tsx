@@ -3,6 +3,7 @@ import s from './ProfileBlock.module.scss'
 import CircularIndeterminate from "../../Progress/CircularIndeterminate";
 import {ProfileType} from "../../../redux/ProfilepageReducer";
 import {ProfileStatus} from "./ProfileStatus";
+import user from "../../../assets/Img/user-icon.png";
 
 export type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -20,7 +21,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                 <div className={s.profileStatus}>
                     <div className={s.statusName}>{props.profile.fullName}</div>
                 </div>
-                <img src={props.profile.photos.large} alt={'photo'}/>
+                <img src={props.profile.photos.small != null ? props.profile.photos.small : user} alt={'img'}/>
             </div>
             <div className={s.profileUserInfo}>
                 <div className={s.userInfo}>
