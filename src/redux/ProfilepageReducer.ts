@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {ActionDispatchType} from "./Type";
 import {Dispatch} from "react";
-import {getProfileUser} from "../Api/Api";
+import {getProfileUser, getUserStatus, putUserStatus} from "../Api/Api";
 
 export type PostType = {
     id:string
@@ -11,6 +11,7 @@ export type InitialStateType = {
     newPostText: string
     posts: PostType[]
     profile: ProfileType | null
+    status: string
 }
 
 //Profile TYpe
@@ -41,9 +42,10 @@ export type ProfileType = {
 //---
 
 let initialState: InitialStateType = {
-        newPostText: '',
-        posts: [],
-        profile: null
+    newPostText: '',
+    posts: [],
+    profile: null,
+    status: ''
 }
 
 export const profilePageReducer = (state: InitialStateType = initialState, action: ActionDispatchType): InitialStateType => {
@@ -63,6 +65,9 @@ export const profilePageReducer = (state: InitialStateType = initialState, actio
         case 'SET_USER_PROFILE':
             return {...state, profile: action.profile}
 
+        case 'SET_USER_STATUS':
+            return {...state, status: action.status}
+
         default:
             return state
     }
@@ -80,8 +85,26 @@ export const removePostsAC = (id:string) => {
 export const setUserProfileAC = (profile:null) => {
     return {type: 'SET_USER_PROFILE', profile} as const
 }
+export const setUserStatusAC = (status:string) => {
+    return {type: 'SET_USER_STATUS', status} as const
+}
+
 //Thunk
 export const getProfileUserTC = (userId:string) => (dispatch:Dispatch<ActionDispatchType>) => {
     getProfileUser(userId)
         .then(data => dispatch(setUserProfileAC(data)))
+}
+
+export const getUserStatusTC = (userId:string) => (dispatch:Dispatch<ActionDispatchType>) => {
+    getUserStatus(userId)
+        .then(data => dispatch(setUserStatusAC(data)))
+}
+
+export const changeStatusTC = (status:string) => (dispatch:Dispatch<ActionDispatchType>) => {
+    putUserStatus(status)
+        .then(data => {
+            if(data.resultCode === 0) {
+                dispatch(setUserStatusAC(status))
+            }
+        })
 }

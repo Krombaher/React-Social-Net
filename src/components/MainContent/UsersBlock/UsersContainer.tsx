@@ -8,26 +8,27 @@ import {
     unfollowTC,
     UsersType
 } from "../../../redux/UsersReducer";
-
 import React from "react";
 import {Users} from "./Users";
 import CircularIndeterminate from "../../Progress/CircularIndeterminate";
-
+import {compose} from "redux";
+import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
+import {withRouter} from "react-router-dom";
 export type UsersAPIComponentPropsType = {
     users: UsersType[]
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: string[]
+    followingInProgress: number[]
     setUsersAC: (users: UsersType[]) => void
     setTotalUsersCountAC: (totalUsersCount: number) => void
     setCurrentPageAC: (currentPage: number) => void
     setIsFetchingAC: (isFetching: boolean) => void
-    setFollowingProgressAC: (isFetching: boolean, userId: string) => void
+    setFollowingProgressAC: (isFetching: boolean, userId: number) => void
     getUsersTC: (currentPage: number, pageSize: number) => void
-    followTC: (userID: string) => void
-    unfollowTC: (userID: string) => void
+    followTC: (userID: number) => void
+    unfollowTC: (userID: number) => void
 }
 
 type MapStatePropsType = {
@@ -36,7 +37,7 @@ type MapStatePropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: string[]
+    followingInProgress: number[]
 }
 
 export class UsersAPIComponent extends React.Component<UsersAPIComponentPropsType, any> {
@@ -77,8 +78,10 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-export const UsersContainer = connect(
-    mapStateToProps, {
+export default compose<React.ComponentType>(
+    withAuthRedirect,
+    withRouter,
+    connect(mapStateToProps, {
         setUsersAC,
         setTotalUsersCountAC,
         setCurrentPageAC,
@@ -87,5 +90,5 @@ export const UsersContainer = connect(
         getUsersTC,
         followTC,
         unfollowTC
-    }
+    })
 )(UsersAPIComponent)

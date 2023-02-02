@@ -1,7 +1,7 @@
 import {
     addPostAC,
     PostType, removePostsAC,
-    setUserProfileAC,
+    setUserProfileAC, setUserStatusAC,
     updateNewPostTextAC,
 
 } from "./ProfilepageReducer";
@@ -11,7 +11,7 @@ import {setUserDataAC} from "./AuthReducer";
 
 export type ActionDispatchType = AddPostActionType | RemovePostActionType | UpdatePostActionType
     | AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType |
-    SetUserProfileACActionType | SetUserDataAT
+    SetUserProfileAT | SetUserDataAT | SetUserStatusAT
 
 //Message type action
 export type AddMessageActionType = ReturnType<typeof AddMessageAC>
@@ -21,7 +21,8 @@ export type RemoveMessageActionType = ReturnType<typeof RemoveMessageAC>
 export type AddPostActionType = ReturnType<typeof addPostAC>
 export type RemovePostActionType = ReturnType<typeof updateNewPostTextAC>
 export type UpdatePostActionType = ReturnType<typeof removePostsAC>
-export type SetUserProfileACActionType = ReturnType<typeof setUserProfileAC>
+export type SetUserProfileAT = ReturnType<typeof setUserProfileAC>
+export type SetUserStatusAT = ReturnType<typeof setUserStatusAC>
 //auth
 export type SetUserDataAT = ReturnType<typeof setUserDataAC>
 

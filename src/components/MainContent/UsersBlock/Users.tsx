@@ -11,15 +11,15 @@ export type UsersPropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: string[]
+    followingInProgress: number[]
     setUsersAC: (users: UsersType[]) => void
     setTotalUsersCountAC: (totalUsersCount: number) => void
     setCurrentPageAC: (currentPage: number) => void
     setIsFetchingAC: (isFetching: boolean) => void
-    setFollowingProgressAC: (isFetching: boolean, userId: string) => void
+    setFollowingProgressAC: (isFetching: boolean, userId: number) => void
     getUsersTC: (currentPage: number, pageSize: number) => void
-    followTC: (userID: string) => void
-    unfollowTC: (userID: string) => void
+    followTC: (userID: number) => void
+    unfollowTC: (userID: number) => void
     onPageChanged:(pagesCount: number) => void
 }
 

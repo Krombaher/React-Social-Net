@@ -2,9 +2,12 @@ import React from 'react'
 import s from './ProfileBlock.module.scss'
 import CircularIndeterminate from "../../Progress/CircularIndeterminate";
 import {ProfileType} from "../../../redux/ProfilepageReducer";
+import {ProfileStatus} from "./ProfileStatus";
 
 export type ProfileInfoPropsType = {
     profile: ProfileType | null
+    changeStatusTC:(status:string) => void
+    status: string
 }
 
 export const ProfileInfo = (props: ProfileInfoPropsType) => {
@@ -21,6 +24,11 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             </div>
             <div className={s.profileUserInfo}>
                 <div className={s.userInfo}>
+                    <ProfileStatus
+                        userId={props.profile.userId}
+                        status={props.status}
+                        changeStatusTC={props.changeStatusTC}
+                    />
                     <span>{props.profile.contacts.github}</span>
                     <span>{props.profile.contacts.vk}</span>
                     <span>{props.profile.contacts.facebook}</span>

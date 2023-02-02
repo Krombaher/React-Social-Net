@@ -1,6 +1,6 @@
 import React from 'react';
 import {FaReact} from "react-icons/fa";
-import NavBar from '../LeftMEnu/NavBar';
+import {NavBar} from '../LeftMEnu/NavBar';
 import s from './Header.module.scss'
 import {NavLink} from "react-router-dom";
 
@@ -12,9 +12,6 @@ export type HeaderPropsType = {
 }
 
 export const Header = (props: HeaderPropsType) => {
-
-    console.log(props)
-
     return (
         <header className={s.header}>
             <div className='_container'>

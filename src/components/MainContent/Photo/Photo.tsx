@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Photos() {
+function Photo() {
   return (
     <div>Photos</div>
   )
 }
 
-export default Photos;
+export default Photo;

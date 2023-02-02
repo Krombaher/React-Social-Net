@@ -18,16 +18,30 @@ export const getProfileUser = (userId:string) => {
         .then(response => response.data)
 }
 
-export const postFollowUser = (id:string) => {
+export const getUserStatus = (userId:string) => {
+    return  instance.get(`profile/status/` + userId)
+        .then(response => {
+            return response.data
+        })
+}
+
+export const putUserStatus = (status:string) => {
+    return  instance.put(`profile/status` , {status: status})
+        .then(response => {
+            return response.data
+        })
+}
+//Follow
+export const postFollowUser = (id:number) => {
     return  instance.post(`follow/${id}`)
         .then(response => response.data)
 }
 
-export const deleteFollowUser = (id:string) => {
+export const deleteFollowUser = (id:number) => {
     return  instance.delete(`follow/${id}`)
         .then(response => response.data)
 }
-
+//
 export const getAuthAPI = () => {
     return instance.get(`auth/me`)
         .then(response => response.data)

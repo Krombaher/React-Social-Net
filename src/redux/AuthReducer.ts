@@ -32,7 +32,6 @@ export const setUserDataAC = (userId: null, login: null, email: null) => {
 //Thunk
 export const getAuthDataTC = () => (dispatch: Dispatch<ActionDispatchType>) => {
     getAuthAPI().then(data => {
-        console.log(data)
         if (data.resultCode === 0) {
             let {id, login, email} = data.data
             dispatch(setUserDataAC(id, login, email))

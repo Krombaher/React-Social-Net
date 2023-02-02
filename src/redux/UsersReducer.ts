@@ -19,7 +19,7 @@ type SetIsFetchingAT = ReturnType<typeof setIsFetchingAC>
 type SetFollowingProgressAT = ReturnType<typeof setFollowingProgressAC>
 
 export type UsersType = {
-    id: string
+    id: number
     photos: {
         small: null
         large: null
@@ -34,7 +34,7 @@ export type InitialStateType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: string[]
+    followingInProgress: number[]
 }
 
 let initialState: InitialStateType = {
@@ -81,10 +81,10 @@ export const usersReducer = (state: InitialStateType = initialState, action: Use
     }
 }
 //Action
-export const followAC = (userID: string) => {
+export const followAC = (userID: number) => {
     return {type: 'FOLLOW', userID} as const
 }
-export const unfollowAC = (userID: string) => {
+export const unfollowAC = (userID: number) => {
     return {type: 'UNFOLLOW', userID} as const
 }
 
@@ -104,7 +104,7 @@ export const setIsFetchingAC = (isFetching: boolean) => {
     return {type: 'SET_IS_FETCHING', isFetching} as const
 }
 
-export const setFollowingProgressAC = (isFetching: boolean, userId: string) => {
+export const setFollowingProgressAC = (isFetching: boolean, userId: number) => {
     return {type: 'SET_FOLLOWING_PROGRESS', isFetching, userId} as const
 }
 //Thunk
@@ -119,7 +119,7 @@ export const getUsersTC = (currentPage: number, pageSize: number ) => (dispatch:
     })
 }
 
-export const followTC = (userID: string) => (dispatch:Dispatch<UsersReducerAT>) => {
+export const followTC = (userID: number) => (dispatch:Dispatch<UsersReducerAT>) => {
     dispatch(setFollowingProgressAC(true,userID))
     postFollowUser(userID)
         .then(data => {
@@ -131,7 +131,7 @@ export const followTC = (userID: string) => (dispatch:Dispatch<UsersReducerAT>) 
         })
 }
 
-export const unfollowTC = (userID: string) => (dispatch:Dispatch<UsersReducerAT>) => {
+export const unfollowTC = (userID: number) => (dispatch:Dispatch<UsersReducerAT>) => {
     dispatch(setFollowingProgressAC(true,userID))
     deleteFollowUser(userID)
         .then(data => {

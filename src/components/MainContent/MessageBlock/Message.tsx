@@ -5,6 +5,7 @@ import {MessageType} from "../../../redux/Type";
 import {Button, IconButton, TextField} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 import {FriendMessage} from "./FriendMessage";
+import {Redirect} from "react-router-dom";
 
 export type MessageProps = {
     newMessage: string
@@ -12,6 +13,7 @@ export type MessageProps = {
     addMessage: () => void
     updateMessage: (message: string) => void
     removeMessage:(id: string) => void
+    isAuth: boolean
 }
 
 export const Message = (props: MessageProps) => {
@@ -27,6 +29,8 @@ export const Message = (props: MessageProps) => {
     const removeMessageHandler = (id:string) => {
         props.removeMessage(id)
     }
+
+    if (!props.isAuth) return <Redirect to={'/login'}/>
 
     const messageItems = props.message.map(el => {
         return (
