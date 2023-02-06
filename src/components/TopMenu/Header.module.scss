@@ -28,3 +28,17 @@
   }
 }
 
+.logout {
+  display: flex;
+  align-items: center;
+}
+
+.logoutBtn {
+  margin: 0 10px;
+  border: none;
+  background: inherit;
+  svg {
+    font-size: 25px;
+  }
+}
+

@@ -53,11 +53,11 @@ export const profilePageReducer = (state: InitialStateType = initialState, actio
     switch (action.type) {
 
         case 'ADD-POST':
-            let newPost = {id: v1(), message: state.newPostText}
+            let newPost = {
+                id: v1(),
+                message: action.newPostText
+            }
             return {...state, posts:[...state.posts, newPost]}
-
-        case 'NEW-POST-TEXT':
-            return {...state, newPostText:action.message}
 
         case 'REMOVE-POST':
             return {...state, posts:state.posts.filter(p => p.id !== action.id)}
@@ -73,15 +73,17 @@ export const profilePageReducer = (state: InitialStateType = initialState, actio
     }
 }
 //Action
-export const addPostAC = () => {
-    return {type: 'ADD-POST'} as const
+export const addPostAC = (newPostText:any) => {
+    return {type: 'ADD-POST', newPostText} as const
 }
-export const updateNewPostTextAC = (message:string) => {
-    return {type: 'NEW-POST-TEXT', message: message} as const
-}
+
 export const removePostsAC = (id:string) => {
     return {type: 'REMOVE-POST', id:id} as const
 }
+
+
+
+//ProfileUser/StatusAC
 export const setUserProfileAC = (profile:null) => {
     return {type: 'SET_USER_PROFILE', profile} as const
 }

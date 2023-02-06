@@ -3,12 +3,14 @@ import {FaReact} from "react-icons/fa";
 import {NavBar} from '../LeftMEnu/NavBar';
 import s from './Header.module.scss'
 import {NavLink} from "react-router-dom";
+import {BiLogIn} from "react-icons/bi";
 
 export type HeaderPropsType = {
     userId: null
     login: null
     email: null
     isAuth: boolean
+    logoutTC: () => void
 }
 
 export const Header = (props: HeaderPropsType) => {
@@ -21,11 +23,15 @@ export const Header = (props: HeaderPropsType) => {
                     </div>
                     <NavBar/>
                     <div>
-                      {
-                        props.isAuth
-                            ? props.login
-                            : <NavLink to={'/login'}>Login</NavLink>
-                      }
+                        {
+                            props.isAuth
+                                ?
+                                <div className={s.logout}> {props.login}
+                                    <button className={s.logoutBtn} onClick={props.logoutTC}><BiLogIn/></button>
+                                </div>
+                                :
+                                <NavLink to={'/login'}>Login</NavLink>
+                        }
                     </div>
                 </div>
             </div>

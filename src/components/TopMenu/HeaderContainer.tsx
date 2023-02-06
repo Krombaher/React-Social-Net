@@ -2,7 +2,7 @@ import React from 'react';
 import {AppStateType} from "../../redux/Redux-store";
 import {connect} from "react-redux";
 import {Header} from "./Header";
-import {getAuthDataTC, setUserDataAC} from "../../redux/AuthReducer";
+import {getAuthDataTC, logoutTC, setUserDataAC} from "../../redux/AuthReducer";
 
 export type HeaderBlockPropsType = {
     userId: null
@@ -10,6 +10,7 @@ export type HeaderBlockPropsType = {
     email: null
     isAuth: boolean
     getAuthDataTC: () => void
+    logoutTC:() => void
 }
 
 export class HeaderBlock extends React.Component<HeaderBlockPropsType, any> {
@@ -38,5 +39,6 @@ let mapStateToProps = (state: AppStateType) => {
 export const HeaderContainer = connect(mapStateToProps,
     {
         setUserDataAC,
-        getAuthDataTC
+        getAuthDataTC,
+        logoutTC
     })(HeaderBlock)

@@ -31,6 +31,7 @@ export const putUserStatus = (status:string) => {
             return response.data
         })
 }
+
 //Follow
 export const postFollowUser = (id:number) => {
     return  instance.post(`follow/${id}`)
@@ -41,9 +42,20 @@ export const deleteFollowUser = (id:number) => {
     return  instance.delete(`follow/${id}`)
         .then(response => response.data)
 }
-//
+
+//Login
 export const getAuthAPI = () => {
     return instance.get(`auth/me`)
         .then(response => response.data)
 }
 
+export const loginAPI = (email:string, password:string, rememderMe: boolean) => {
+    return instance.post(`auth/login`, {email, password, rememderMe})
+        .then(response => response.data)
+}
+
+export const logoutAPI = () => {
+    return instance.delete(`auth/login`)
+        .then(response => response.data)
+}
+//

@@ -6,29 +6,26 @@ import {
     PostType, ProfileType,
     removePostsAC,
     setUserProfileAC,
-    updateNewPostTextAC
 } from "../../../redux/ProfilepageReducer";
 import {ProfileInfo} from "./ProfileInfo";
 import {ProfilePost} from "./ProfilePost";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
 
 export type ProfileBlockContainerPropsType = {
-    newPostText: string
     posts: PostType[]
     profile: ProfileType | null
-    addPost: () => void
-    updateMessagePost: (message: string) => void
-    removePost: (id: string) => void
+    addPostAC: (values: any) => void
+    removePostsAC: (id: string) => void
     setUserProfileAC: (profile: null) => void
-    getProfileUserTC:(userId:string) => void
-    getUserStatusTC:(userId:string) => void
-    changeStatusTC:(status:string) => void
+    getProfileUserTC: (userId: string) => void
+    getUserStatusTC: (userId: string) => void
+    changeStatusTC: (status: string) => void
     status: string
 }
 
 type MapStatePropsType = {
-    newPostText: string
     posts: PostType[]
     profile: ProfileType | null
     status: string
@@ -44,7 +41,7 @@ export class ProfileBlockContainer extends React.Component<ProfilePropsType, any
 
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if(!userId) {userId = "26603"}
+        if (!userId) userId = "26603"
         this.props.getProfileUserTC(userId)
         this.props.getUserStatusTC(userId)
     }
@@ -69,7 +66,6 @@ export class ProfileBlockContainer extends React.Component<ProfilePropsType, any
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        newPostText: state.profilePage.newPostText,
         posts: state.profilePage.posts,
         profile: state.profilePage.profile,
         status: state.profilePage.status
@@ -77,16 +73,16 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 export default compose<React.ComponentType>(
-    // withAuthRedirect,
+    withAuthRedirect,
     withRouter,
-    connect(mapStateToProps, {
-        addPost: addPostAC,
-        updateMessagePost: updateNewPostTextAC,
-        removePost: removePostsAC,
-        setUserProfileAC: setUserProfileAC,
-        getProfileUserTC: getProfileUserTC,
-        getUserStatusTC,
-        changeStatusTC
-    })
+    connect(mapStateToProps,
+        {
+            addPostAC,
+            removePostsAC,
+            setUserProfileAC,
+            getProfileUserTC,
+            getUserStatusTC,
+            changeStatusTC
+        })
 )(ProfileBlockContainer)
 
