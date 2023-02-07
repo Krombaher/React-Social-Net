@@ -21,6 +21,11 @@ export const LoginForm: FC<InjectedFormProps<FormDataType>> = ({handleSubmit, er
             <div>
                 <button>Login</button>
             </div>
+            {
+                error && <div style={{color: 'red'}}>
+                    {error}
+                </div>
+            }
         </form>
     )
 }

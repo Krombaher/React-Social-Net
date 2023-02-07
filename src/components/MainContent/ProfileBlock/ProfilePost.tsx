@@ -2,7 +2,7 @@ import React from 'react'
 import user from '../../../assets/Img/user-icon.png'
 import {AiOutlineDelete} from "react-icons/ai";
 import s from './ProfileBlock.module.scss'
-import {PostType} from "../../../redux/ProfilepageReducer";
+import {PostType} from "../../../redux/reducers/ProfilepageReducer";
 import {ProfilePostForm} from "./ProfilePostForm";
 import {reduxForm} from "redux-form";
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './ProfileBlock.module.scss'
 import CircularIndeterminate from "../../Progress/CircularIndeterminate";
-import {ProfileType} from "../../../redux/ProfilepageReducer";
+import {ProfileType} from "../../../redux/reducers/ProfilepageReducer";
 import {ProfileStatus} from "./ProfileStatus";
 import user from "../../../assets/Img/user-icon.png";
 

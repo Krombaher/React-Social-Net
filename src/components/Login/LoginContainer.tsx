@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import {Login} from "./Login";
-import {loginTC, logoutTC} from "../../redux/AuthReducer";
+import {loginTC} from "../../redux/reducers/AuthReducer";
 import {AppStateType} from "../../redux/Redux-store";
 
 export type LoginContainerPropsType = {

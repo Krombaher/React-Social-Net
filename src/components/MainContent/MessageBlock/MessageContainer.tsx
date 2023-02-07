@@ -1,5 +1,5 @@
 import React from 'react'
-import {AddMessageAC, RemoveMessageAC, UpdateMessageAC,} from "../../../redux/DialogpageReducer";
+import {AddMessageAC, RemoveMessageAC, UpdateMessageAC,} from "../../../redux/reducers/DialogpageReducer";
 import {Message} from "./Message";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/Redux-store";

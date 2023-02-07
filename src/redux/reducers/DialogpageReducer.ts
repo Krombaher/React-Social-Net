@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {ActionDispatchType, MessagePageType,} from "./Type";
+import {ActionDispatchType, MessagePageType,} from "../Type";
 
 let initialState = {
     newMessage: '',

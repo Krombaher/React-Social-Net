@@ -1,8 +1,9 @@
-import {ActionDispatchType} from "./Type";
+import {ActionDispatchType} from "../Type";
 import {Dispatch} from "react";
-import {getAuthAPI, loginAPI, logoutAPI} from "../Api/Api";
+import {getAuthAPI, loginAPI, logoutAPI} from "../../Api/Api";
 import {ThunkDispatch} from "redux-thunk";
-import {AppStateType} from "./Redux-store";
+import {AppStateType} from "../Redux-store";
+import {stopSubmit} from "redux-form";
 
 export type InitialStateType = {
     userId: null
@@ -36,7 +37,7 @@ export const setUserDataAC = (userId: null, login: null, email: null, isAuth: bo
 }
 //Thunk
 export const getAuthDataTC = () => (dispatch: Dispatch<ActionDispatchType>) => {
-    getAuthAPI().then(data => {
+    return getAuthAPI().then(data => {
         if (data.resultCode === 0) {
             let {id, login, email} = data.data
             dispatch(setUserDataAC(id, login, email, true))
@@ -45,10 +46,14 @@ export const getAuthDataTC = () => (dispatch: Dispatch<ActionDispatchType>) => {
 }
 
 export const loginTC = (email:string, password:string, rememderMe: boolean) => (dispatch: ThunkDispatch<AppStateType, any, ActionDispatchType>) => {
+
     loginAPI(email, password, rememderMe)
         .then(data => {
         if (data.resultCode === 0) {
             dispatch(getAuthDataTC())
+        } else {
+            let message = data.messages.length > 0 ? data.messages[0] : 'Some error'
+            dispatch(stopSubmit('login', {_error: message}))
         }
     })
 }

@@ -1,7 +1,7 @@
 import {v1} from "uuid";
-import {ActionDispatchType} from "./Type";
+import {ActionDispatchType} from "../Type";
 import {Dispatch} from "react";
-import {getProfileUser, getUserStatus, putUserStatus} from "../Api/Api";
+import {getProfileUser, getUserStatus, putUserStatus} from "../../Api/Api";
 
 export type PostType = {
     id:string

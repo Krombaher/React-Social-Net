@@ -1,5 +1,5 @@
 import {Dispatch} from "react";
-import {deleteFollowUser, getUsers, postFollowUser} from "../Api/Api";
+import {deleteFollowUser, getDataUsers, postFollowUser} from "../../Api/Api";
 
 type UsersReducerAT =
     FollowAT
@@ -112,7 +112,7 @@ export const setFollowingProgressAC = (isFetching: boolean, userId: number) => {
 export const getUsersTC = (currentPage: number, pageSize: number ) => (dispatch:Dispatch<UsersReducerAT>) => {
     dispatch(setIsFetchingAC(true))
     dispatch(setCurrentPageAC(currentPage))
-    getUsers(currentPage,pageSize).then(data => {
+    getDataUsers(currentPage,pageSize).then(data => {
         dispatch(setIsFetchingAC(false))
         dispatch(setUsersAC(data.items))
         dispatch(setTotalUsersCountAC(data.totalCount))

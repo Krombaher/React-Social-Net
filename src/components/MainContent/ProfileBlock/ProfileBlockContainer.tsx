@@ -6,7 +6,7 @@ import {
     PostType, ProfileType,
     removePostsAC,
     setUserProfileAC,
-} from "../../../redux/ProfilepageReducer";
+} from "../../../redux/reducers/ProfilepageReducer";
 import {ProfileInfo} from "./ProfileInfo";
 import {ProfilePost} from "./ProfilePost";
 import {RouteComponentProps, withRouter} from "react-router-dom";
@@ -23,12 +23,16 @@ export type ProfileBlockContainerPropsType = {
     getUserStatusTC: (userId: string) => void
     changeStatusTC: (status: string) => void
     status: string
+    userId: null
+    isAuth:boolean
 }
 
 type MapStatePropsType = {
     posts: PostType[]
     profile: ProfileType | null
     status: string
+    userId: null
+    isAuth:boolean
 }
 
 type PathParamsType = {
@@ -41,7 +45,15 @@ export class ProfileBlockContainer extends React.Component<ProfilePropsType, any
 
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if (!userId) userId = "26603"
+
+        if (!userId) { // @ts-ignore
+            userId = this.props.userId
+
+            // if (!userId) { // @ts-ignore
+            //     this.props.history.push('/login')
+            // }
+            //
+        }
         this.props.getProfileUserTC(userId)
         this.props.getUserStatusTC(userId)
     }
@@ -68,7 +80,9 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         posts: state.profilePage.posts,
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        userId: state.authPage.userId,
+        isAuth: state.authPage.isAuth
     }
 }
 

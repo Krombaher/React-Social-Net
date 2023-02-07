@@ -2,13 +2,14 @@ import {
     addPostAC,
     PostType, removePostsAC,
     setUserProfileAC, setUserStatusAC,
-} from "./ProfilepageReducer";
-import {AddMessageAC, RemoveMessageAC, UpdateMessageAC} from "./DialogpageReducer";
-import {getAuthDataTC, setUserDataAC} from "./AuthReducer";
+} from "./reducers/ProfilepageReducer";
+import {AddMessageAC, RemoveMessageAC, UpdateMessageAC} from "./reducers/DialogpageReducer";
+import {getAuthDataTC, setUserDataAC} from "./reducers/AuthReducer";
+import {initializedAC} from "./reducers/AppReducer";
 
 export type ActionDispatchType = AddPostActionType | RemovePostActionType
     | AddMessageActionType | UpdateMessageActionType | RemoveMessageActionType |
-    SetUserProfileAT | SetUserDataAT | SetUserStatusAT
+    SetUserProfileAT | SetUserDataAT | SetUserStatusAT | InitializedAT
 
 //Message type action
 export type AddMessageActionType = ReturnType<typeof AddMessageAC>
@@ -22,7 +23,8 @@ export type SetUserProfileAT = ReturnType<typeof setUserProfileAC>
 export type SetUserStatusAT = ReturnType<typeof setUserStatusAC>
 //auth
 export type SetUserDataAT = ReturnType<typeof setUserDataAC>
-
+//appReducer
+export type InitializedAT = ReturnType<typeof initializedAC>
 //Type all
 
 export type MessageType = {

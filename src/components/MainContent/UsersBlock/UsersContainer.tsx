@@ -7,13 +7,22 @@ import {
     setUsersAC,
     unfollowTC,
     UsersType
-} from "../../../redux/UsersReducer";
+} from "../../../redux/reducers/UsersReducer";
 import React from "react";
 import {Users} from "./Users";
 import CircularIndeterminate from "../../Progress/CircularIndeterminate";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../../redux/selectors/user-selector";
+
 export type UsersAPIComponentPropsType = {
     users: UsersType[]
     pageSize: number
@@ -69,12 +78,12 @@ export class UsersAPIComponent extends React.Component<UsersAPIComponentPropsTyp
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 

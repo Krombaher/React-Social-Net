@@ -2,7 +2,7 @@ import React from 'react'
 import user from '../../../assets/Img/user-icon.png';
 import s from './Users.module.scss'
 import PaginationControlled from "../../Pagination/PaginationControlled";
-import {UsersType} from "../../../redux/UsersReducer";
+import {UsersType} from "../../../redux/reducers/UsersReducer";
 import {NavLink} from "react-router-dom";
 
 export type UsersPropsType = {
